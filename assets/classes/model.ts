@@ -6,4 +6,8 @@ export interface Class {
     topic: string;
     students: User[];
     status: string;
+    rating?: {
+        rating: number;
+        classId: number;
+    };
 }

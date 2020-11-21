@@ -34,10 +34,25 @@ export const cancelClass = createAsyncThunk(
     }
 );
 
+export const saveRating = createAsyncThunk(
+    "/api/classes/{id}/rating",
+    async (klass: { rating: number; id: number }) => {
+        const response = await axios.post<Class>(
+            `/api/classes/${klass.id}/rating`,
+            {
+                rating: klass.rating,
+            }
+        );
+        return response.data;
+    }
+);
+
 const slice = createSlice({
     name: "classes",
     initialState: adapter.getInitialState(),
-    reducers: {},
+    reducers: {
+        classesUpdate: adapter.updateOne,
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchClasses.fulfilled, adapter.addMany)
@@ -45,6 +60,8 @@ const slice = createSlice({
             .addCase(cancelClass.fulfilled, adapter.upsertOne);
     },
 });
+
+export const { classesUpdate } = slice.actions;
 
 export const classesReducer = slice.reducer;
 
