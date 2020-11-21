@@ -34,7 +34,9 @@ const ClassCard: React.FC<ClassCardProps> = (props) => {
     return (
         <Card>
             <CardContent>
-                <Typography variant="h5">{klass.topic}</Typography>
+                <Typography noWrap variant="h5">
+                    {klass.topic}
+                </Typography>
                 <Typography>Starts at {klass.startsAt}</Typography>
                 <Typography>Status: {klass.status}</Typography>
             </CardContent>
