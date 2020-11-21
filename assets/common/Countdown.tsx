@@ -10,7 +10,7 @@ const Countdown: React.FC<CountdownProps> = (props) => {
     const interval = useRef<number | null>(null);
 
     const startTimer = () => {
-        const countdownDate = props.startsAt; // this should be passed from prop
+        const countdownDate = props.startsAt;
         interval.current = window.setInterval(() => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
